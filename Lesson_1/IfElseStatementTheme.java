@@ -31,7 +31,7 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Первая буква имени не M и не I");
         }
-            
+
         System.out.println("\n2. Поиск max и min числа");
         int num1 = 100;
         int num2 = 55;
@@ -63,12 +63,12 @@ public class IfElseStatementTheme {
         System.out.println("\n4. Поиск одинаковых цифр в числах");
         int x = 101;
         int y = 102;
-        int digitx1 = x%10;
-        int digitx2 = x/10%10;
-        int digitx3 = x/100;
-        int digity1 = y%10;
-        int digity2 = y/10%10;
-        int digity3 = y/100;
+        int digitx1 = x % 10;
+        int digitx2 = x / 10 % 10;
+        int digitx3 = x / 100;
+        int digity1 = y % 10;
+        int digity2 = y / 10 % 10;
+        int digity3 = y / 100;
         System.out.println("Исходные числа: " + x + ", " + y);
         System.out.println("");
         if(digitx1 == digity1) {
@@ -80,7 +80,7 @@ public class IfElseStatementTheme {
         if(digitx3 == digity3) {
             System.out.println("Одинаковые цифры в 3-м разряде: " + digitx3);
         }
-        if(digitx1 != digity1 && digitx2 != digity2 && digitx2 != digity2) {
+        if(digitx1 != digity1 && digitx2 != digity2 && digitx3 != digity3) {
             System.out.println("Цифры во всех разрядах отличаются");
         }
 
@@ -152,22 +152,22 @@ public class IfElseStatementTheme {
 
         System.out.println("\n 9. Подсчет количества банкнот");
         int cashWithdrawal = 567;
-        int banknotes100 = cashWithdrawal / 100;
-        int banknotes10 = cashWithdrawal / 10 % 10;
-        int banknotes1 = cashWithdrawal % 10;
-        if(banknotes100 > 10) {
-             banknotes10 = banknotes10 + (banknotes100 - 10) * 10;
-             banknotes100 = 10;
+        int hundreds = cashWithdrawal / 100;
+        int dozens = cashWithdrawal / 10 % 10;
+        int units = cashWithdrawal % 10;
+        if(hundreds > 10) {
+             dozens = dozens + (hundreds - 10) * 10;
+             hundreds = 10;
         }
-        if(banknotes10 > 5) {
-             banknotes1 = banknotes1 + (banknotes10 - 5) * 10;
-             banknotes10 = 5;
+        if(dozens > 5) {
+             units = units + (dozens - 5) * 10;
+             dozens = 5;
         }
-        boolean isCalculationCorrect = (banknotes100*100 + banknotes10*10 + banknotes1*1) == cashWithdrawal;
+        boolean isCalculationCorrect = (hundreds * 100 + dozens * 10 + units * 1) == cashWithdrawal;
         System.out.println("расчет верный? " + isCalculationCorrect);
-        System.out.println(banknotes100 + " банкнот по 100 USD");
-        System.out.println(banknotes10 + " банкнот по 10 USD");
-        System.out.println(banknotes1 + " банкнот по 1 USD");
-        System.out.println("Сумма снятия = " + (banknotes100*100 + banknotes10*10 + banknotes1*1) + " USD");
+        System.out.println(hundreds + " банкнот по 100 USD");
+        System.out.println(dozens + " банкнот по 10 USD");
+        System.out.println(units + " банкнот по 1 USD");
+        System.out.println("Сумма снятия = " + (hundreds * 100 + dozens * 10 + units * 1) + " USD");
     }
 }

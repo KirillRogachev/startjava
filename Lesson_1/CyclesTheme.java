@@ -34,10 +34,10 @@ public class CyclesTheme {
             min = num3;
         }
         for(i = max - 1; i > min; i--) {
-            System.out.print(i +", ");
+            System.out.print(i + " ");
         }
 
-        System.out.println("\n3. Вывод реверсивного числа и суммы его цифр");
+        System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
         int num = 1234;
         int sum = 0;
         int digit;
@@ -63,7 +63,7 @@ public class CyclesTheme {
             j++;
         }
 
-        System.out.println("\n5. Проверка количества двоек на четность");
+        System.out.println("\n\n5. Проверка количества двоек на четность");
         num = 3242592;
         System.out.print("Число " + num);
         int evenDigitsCount = 0;
@@ -135,11 +135,10 @@ public class CyclesTheme {
         int multiplier = 1000000;
         num = initialNum;
         while(num > 0) {
-                digit = num % 10; // определение цифры
-                digit *= multiplier; // перевод цифры в зеркальный разряд
-                multiplier /= 10;
-                mirroredNum += digit; // сложение числа в перевернутом виде
+                digit = num % 10;
+                mirroredNum += digit * multiplier;
                 num /= 10;
+                multiplier /= 10;
             }
         if(mirroredNum == initialNum) {
             System.out.println("Число " + initialNum + " является палиндромом");
@@ -155,11 +154,11 @@ public class CyclesTheme {
             last3Sum += num % 10;
             num /= 10;
         }
-         System.out.println(" ");
+        System.out.println(" ");
         while(num > 0) {
             first3Sum += num % 10;
             num /= 10;
-        }       
+        }
         System.out.println("Сумма первых 3 цифр = " + first3Sum);
         System.out.println("Сумма последних 3 цифр = " + first3Sum);
         if(first3Sum == last3Sum) {
@@ -167,7 +166,7 @@ public class CyclesTheme {
         } else {
             System.out.println("Число не является счастливым");
         }
-    
+
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         System.out.printf("   |");
         for(i = 2; i <= 9; i++) {
