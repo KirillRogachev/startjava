@@ -39,18 +39,18 @@ public class VariablesTheme {
         short shortMax = 32_767;
         int intMax = 2_147_483_647;
         long longMax = 9_223_372_036_854_775_807L;
-        System.out.println("- byte\nпервоначальное значение " + byteMax++);
-        System.out.println("значение после инкремента " + byteMax--);
-        System.out.println("значение после декремента " + byteMax);
-        System.out.println("- short\nпервоначальное значение " + shortMax++);
-        System.out.println("значение после инкремента " + shortMax--);
-        System.out.println("значение после декремента " + shortMax);
-        System.out.println("- int\nпервоначальное значение " + intMax++);
-        System.out.println("значение после инкремента " + intMax--);
-        System.out.println("значение после декремента " + intMax);
-        System.out.println("- long\nпервоначальное значение " + longMax++);
-        System.out.println("значение после инкремента " + longMax--);
-        System.out.println("значение после декремента " + longMax);
+        System.out.println("- byte\nпервоначальное значение " + byteMax);
+        System.out.println("значение после инкремента " + ++byteMax);
+        System.out.println("значение после декремента " + --byteMax);
+        System.out.println("- short\nпервоначальное значение " + shortMax);
+        System.out.println("значение после инкремента " + ++shortMax);
+        System.out.println("значение после декремента " + --shortMax);
+        System.out.println("- int\nпервоначальное значение " + intMax);
+        System.out.println("значение после инкремента " + ++intMax);
+        System.out.println("значение после декремента " + --intMax);
+        System.out.println("- long\nпервоначальное значение " + longMax);
+        System.out.println("значение после инкремента " + ++longMax);
+        System.out.println("значение после декремента " + --longMax);
 
         System.out.println("\n5. Перестановка значений переменных");
         int x = 3;
@@ -89,10 +89,10 @@ public class VariablesTheme {
         System.out.println("\n7. Вывод количества сотен, десятков и единиц числа");
         int srcNum = 123;
         int hundreds = srcNum / 100;
-        int dozens = srcNum % 100 / 10;
-        int units = srcNum % 10;
+        int tens = srcNum % 100 / 10;
+        int ones = srcNum % 10;
         System.out.println("Число " + srcNum + " содержит:");
-        System.out.println("\t" + hundreds + " сотен\n\t" + dozens + " десятков\n\t" + units + " единиц");
+        System.out.println("\t" + hundreds + " сотен\n\t" + tens + " десятков\n\t" + ones + " единиц");
 
         System.out.println("\n8. Вывод в консоль ASCII-арт Дюка");
         char sl = '/';
@@ -109,10 +109,10 @@ public class VariablesTheme {
         System.out.println("\n9. Вывод произведения и суммы цифр числа");
         srcNum = 345;
         hundreds = srcNum / 100;
-        dozens = srcNum % 100 / 10;
-        units = srcNum % 10;
-        int prodDigits = hundreds * dozens * units;
-        int sumDigits = hundreds + dozens + units;
+        tens = srcNum % 100 / 10;
+        ones = srcNum % 10;
+        int prodDigits = hundreds * tens * ones;
+        int sumDigits = hundreds + tens + ones;
         System.out.println("Сумма цифр числа " + srcNum + " = " + sumDigits);
         System.out.println("Их произведение = " + prodDigits);
 
