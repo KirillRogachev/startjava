@@ -61,37 +61,37 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах");
-        int x = 101;
-        int y = 102;
-        int digitx1 = x % 10;
-        int digitx2 = x / 10 % 10;
-        int digitx3 = x / 100;
-        int digity1 = y % 10;
-        int digity2 = y / 10 % 10;
-        int digity3 = y / 100;
-        System.out.println("Исходные числа: " + x + ", " + y);
+        num1 = 101;
+        num2 = 102;
+        int num1Ones = num1 % 10;
+        int num1Tens = num1 / 10 % 10;
+        int num1Hundreds = num1 / 100;
+        int num2Ones = num2 % 10;
+        int num2Tens = num2 / 10 % 10;
+        int num2Hundreds = num2 / 100;
+        System.out.println("Исходные числа: " + num1 + ", " + num2);
         System.out.println("");
-        if(digitx1 == digity1) {
-            System.out.println("Одинаковые цифры в 1-м разряде: " + digitx1);
+        if(num1Ones == num2Ones) {
+            System.out.println("Одинаковые цифры в 1-м разряде: " + num1Ones);
         }
-        if(digitx2 == digity2) {
-            System.out.println("Одинаковые цифры во 2-м разряде: " + digitx2);
+        if(num1Tens == num2Tens) {
+            System.out.println("Одинаковые цифры во 2-м разряде: " + num1Tens);
         }
-        if(digitx3 == digity3) {
-            System.out.println("Одинаковые цифры в 3-м разряде: " + digitx3);
+        if(num1Hundreds == num2Hundreds) {
+            System.out.println("Одинаковые цифры в 3-м разряде: " + num1Hundreds);
         }
-        if(digitx1 != digity1 && digitx2 != digity2 && digitx3 != digity3) {
+        if(num1Ones != num2Ones & num1Tens != num2Tens & num1Hundreds != num2Hundreds) {
             System.out.println("Цифры во всех разрядах отличаются");
         }
 
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
-        char c = '\u0057';
-        System.out.print(c + " - ");
-        if(c >= 'a' && c <= 'z' || c >= 'а' && c <= 'я') {
+        char symbol = '\u0057';
+        System.out.print(symbol + " - ");
+        if(symbol >= 'a' & symbol <= 'z' || symbol >= 'а' & symbol <= 'я') {
             System.out.println("маленькая буква");
-        } else if(c >= 'A' && c <= 'Z' || c >= 'А' && c <= 'Я') {
+        } else if((symbol >= 'A' & symbol <= 'Z') || (symbol >= 'А' & symbol <= 'Я')) {
             System.out.println("большая буква");
-        } else if(c >= '0' && c <= '9') {
+        } else if(symbol >= '0' & symbol <= '9') {
             System.out.println("число");
         } else {
             System.out.println("не буква и не число");
@@ -99,14 +99,12 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6. Определение суммы вклада и начисленных банком %");
         int deposit = 300000;
-        double rate;
+        double rate = 10;
         if(deposit < 100000) {
             rate = 5;
         } else if(deposit < 300000) {
             rate = 7;
-        } else {
-            rate = 10;
-        }
+        } 
         System.out.println("Сумма вклада = " + deposit);
         System.out.println("Начисленный процент = " + deposit * rate / 100);
         System.out.println("Итоговая сумма с % = " + deposit * (1 + rate / 100));
@@ -114,26 +112,22 @@ public class IfElseStatementTheme {
         System.out.println("\n7. Определение оценки по предметам");
         int historyGrade = 59;
         int programmingGrade = 91;
-        int historyMark;
-        int programmingMark;
+        int historyMark = 5;
+        int programmingMark = 5;
         if(historyGrade <= 60) {
             historyMark = 2;
         } else if(historyGrade <= 73) {
             historyMark = 3;
         } else if(historyGrade <= 91) {
             historyMark = 4;
-        } else {
-            historyMark = 5;
-        }
+        } 
         if(programmingGrade <= 60) {
             programmingMark = 2;
         } else if(programmingGrade <= 73) {
             programmingMark = 3;
         } else if(programmingGrade <= 91) {
             programmingMark = 4;
-        } else {
-            programmingMark = 5;
-        }
+        } 
         System.out.println(historyMark + " - оценка по истории");
         System.out.println(programmingMark + " - оценка по программированию");
         System.out.println((historyMark + programmingMark) / 2 + " - средняя оценка по предметам");
@@ -151,23 +145,30 @@ public class IfElseStatementTheme {
         System.out.println(annualProfit);
 
         System.out.println("\n 9. Подсчет количества банкнот");
-        int cashWithdrawal = 567;
-        int hundreds = cashWithdrawal / 100;
-        int dozens = cashWithdrawal / 10 % 10;
-        int units = cashWithdrawal % 10;
-        if(hundreds > 10) {
-             dozens = dozens + (hundreds - 10) * 10;
-             hundreds = 10;
+        int hundredsStock = 10;
+        int tensStock = 5;
+        int onesStock = 50;
+        int totalWithdrawalAmount = 567;
+        int hundredsWithdrawal = totalWithdrawalAmount / 100;
+        int tensWithdrawal = totalWithdrawalAmount / 10 % 10;
+        int onesWithdrawal = totalWithdrawalAmount % 10;
+        if(hundredsWithdrawal > hundredsStock) {
+             tensWithdrawal += (hundredsWithdrawal - hundredsStock) * 10;
+             hundredsWithdrawal = hundredsStock;
         }
-        if(dozens > 5) {
-             units = units + (dozens - 5) * 10;
-             dozens = 5;
+        if(tensWithdrawal > tensStock) {
+             onesWithdrawal += (tensWithdrawal - tensStock) * 10;
+             tensWithdrawal = tensStock;
         }
-        boolean isCalculationCorrect = (hundreds * 100 + dozens * 10 + units * 1) == cashWithdrawal;
+        if(onesWithdrawal > onesStock) {
+            System.out.println("В банкомате закончились банкноты номиналом 1 доллар");
+        } else {
+        boolean isCalculationCorrect = (hundredsWithdrawal * 100 + tensWithdrawal * 10 + onesWithdrawal) == totalWithdrawalAmount;
         System.out.println("расчет верный? " + isCalculationCorrect);
-        System.out.println(hundreds + " банкнот по 100 USD");
-        System.out.println(dozens + " банкнот по 10 USD");
-        System.out.println(units + " банкнот по 1 USD");
-        System.out.println("Сумма снятия = " + (hundreds * 100 + dozens * 10 + units * 1) + " USD");
+        System.out.println(hundredsWithdrawal + " банкнот по 100 USD");
+        System.out.println(tensWithdrawal + " банкнот по 10 USD");
+        System.out.println(onesWithdrawal + " банкнот по 1 USD");
+        System.out.println("Сумма снятия = " + totalWithdrawalAmount + " USD");
+        }
     }
 }
