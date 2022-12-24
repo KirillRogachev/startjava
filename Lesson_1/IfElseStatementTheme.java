@@ -80,14 +80,14 @@ public class IfElseStatementTheme {
         if(num1Hundreds == num2Hundreds) {
             System.out.println("Одинаковые цифры в 3-м разряде: " + num1Hundreds);
         }
-        if(num1Ones != num2Ones & num1Tens != num2Tens & num1Hundreds != num2Hundreds) {
+        if(num1Ones != num2Ones && num1Tens != num2Tens && num1Hundreds != num2Hundreds) {
             System.out.println("Цифры во всех разрядах отличаются");
         }
 
         System.out.println("\n5. Определение буквы, числа или символа по их коду");
         char symbol = '\u0057';
         System.out.print(symbol + " - ");
-        if(symbol >= 'a' & symbol <= 'z' || symbol >= 'а' & symbol <= 'я') {
+        if((symbol >= 'a' && symbol <= 'z') || (symbol >= 'а' && symbol <= 'я')) {
             System.out.println("маленькая буква");
         } else if((symbol >= 'A' & symbol <= 'Z') || (symbol >= 'А' & symbol <= 'Я')) {
             System.out.println("большая буква");
@@ -135,7 +135,7 @@ public class IfElseStatementTheme {
 
         System.out.println("\n8. Расчет прибыли");
         int monthlyRent = 5000;
-        int  monthlyRevenue = 13000;
+        int monthlyRevenue = 13000;
         int monthlyCost = 9000;
         int annualProfit = (monthlyRevenue - monthlyCost - monthlyRent) * 12;
         System.out.print("Прибыль за год: ");
@@ -163,12 +163,13 @@ public class IfElseStatementTheme {
         if(onesWithdrawal > onesStock) {
             System.out.println("В банкомате закончились банкноты номиналом 1 доллар");
         } else {
-        boolean isCalculationCorrect = (hundredsWithdrawal * 100 + tensWithdrawal * 10 + onesWithdrawal) == totalWithdrawalAmount;
-        System.out.println("расчет верный? " + isCalculationCorrect);
-        System.out.println(hundredsWithdrawal + " банкнот по 100 USD");
-        System.out.println(tensWithdrawal + " банкнот по 10 USD");
-        System.out.println(onesWithdrawal + " банкнот по 1 USD");
-        System.out.println("Сумма снятия = " + totalWithdrawalAmount + " USD");
+            boolean isCalculationCorrect = (hundredsWithdrawal * 100 + tensWithdrawal * 10 + 
+                                            onesWithdrawal) == totalWithdrawalAmount;
+            System.out.println("расчет верный? " + isCalculationCorrect);
+            System.out.println(hundredsWithdrawal + " банкнот по 100 USD");
+            System.out.println(tensWithdrawal + " банкнот по 10 USD");
+            System.out.println(onesWithdrawal + " банкнот по 1 USD");
+            System.out.println("Сумма снятия = " + totalWithdrawalAmount + " USD");
         }
     }
 }
