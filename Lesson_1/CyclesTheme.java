@@ -18,11 +18,9 @@ public class CyclesTheme {
         int num1 = 10;
         int num2 = 5; 
         int num3 = -1;
-        int max, min;
-        if(num1 > num2) {
-            max = num1;
-            min = num2;
-        } else {
+        int max = num1;
+        int min = num2;
+        if(num1 < num2) {
             max = num2;
             min = num1;
         }
@@ -32,8 +30,8 @@ public class CyclesTheme {
         if(num3 < min) {
             min = num3;
         }
-        for(counter = max - 1; counter > min; counter--) {
-            System.out.print(counter + " ");
+        for(int i = max - 1; i > min; i--) {
+            System.out.print(i + " ");
         }
 
         System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
@@ -48,17 +46,17 @@ public class CyclesTheme {
         System.out.println("\nСумма всех цифр: " + sum);
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
-        counter = 0;
+        int column = 0;
         for(num = 1; num < 24; num += 2) {
             System.out.printf("%2d ", num);
-            counter++;
-            if(counter % 5 == 0) {
+            column++;
+            if(column % 5 == 0) {
                 System.out.println();
             }
         }
-        while(counter % 5 != 0) {
+        while(column % 5 != 0) {
             System.out.printf("%2d ", 0);
-            counter++;
+            column++;
         }
 
         System.out.println("\n\n5. Проверка количества двоек на четность");
@@ -80,69 +78,69 @@ public class CyclesTheme {
         }
 
         System.out.println("\n6. Отображение фигур в консоли\n");
-        int i, j;
-        for(i = 0; i < 5; i++) {
-            for(j = 0; j < 10; j++){
+        int row; 
+        for(row = 0; row < 5; row++) {
+            for(column = 0; column < 10; column++) {
                 System.out.print("*");
             }
             System.out.println();
         }
         System.out.println();
-        i = 0;
-        while(i < 5) {
-            j = 5 - i;
-            while(j > 0) {
+
+        row = 0;
+        column = 0;
+        while(row < 5) {
+            column = 5 - row;
+            while(column > 0) {
                 System.out.print("#");
-                j--;
+                column--;
             }
             System.out.println();
-            i++;
+            row++;
         }
         System.out.println();
-        i = 1;
-        do {
-            j = 1;
-            do {
-                System.out.print("$");
-                    j++;
-                } while(j <= i);
-            System.out.println();
-            i++;
-        } while(i <= 3);
-        do {
-            do {
-                System.out.print("$");
-                    j--;
-                } while(j >= i - 1);
-            System.out.println();
-            i++;
-        } while(i <= 5);
-        
 
+        row = 0;
+        do {
+            column = 0;
+            do {
+                System.out.print("$");
+                    column++;
+                } while(column <= row);
+            System.out.println();
+            row++;
+        } while(row < 3);
+        do {
+            do {
+                System.out.print("$");
+                    column--;
+                } while(column >= row - 1);
+            System.out.println();
+            row++;
+        } while(row < 5);
+        
         System.out.println("\n7. Отображение ASCII-символов");
         System.out.printf("%4s%4s%n", "Dec ", "Char");
-        for(i = 1; i < 48; i += 2) {
-            System.out.printf("%4d%4c%n", i, (char)i);
+        for(int i = 1; i < 48; i += 2) {
+            System.out.printf("%4d%4c%n", i, (char) i);
         }
-        for(i = 98; i < 123; i += 2) {
-            System.out.printf("%4d%4c%n", i, (char)i);
+        for(int i = 98; i < 123; i += 2) {
+            System.out.printf("%4d%4c%n", i, (char) i);
         }
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
-        int initialNum = 1234321;
-        int mirroredNum = 0;
-        int multiplier = 1000000;
-        num = initialNum;
-        while(num > 0) {
-                int digit = num % 10;
-                mirroredNum += digit * multiplier;
-                num /= 10;
-                multiplier /= 10;
-            }
-        if(mirroredNum == initialNum) {
-            System.out.println("Число " + initialNum + " является палиндромом");
+        num = 1234321;
+        int reversedNum = 0;
+        int copyNum = num;
+        while(copyNum > 0) {
+            int digit = copyNum % 10;
+            reversedNum = digit + reversedNum * 10;
+            copyNum /= 10;
+        }
+        if(reversedNum == num) {
+            System.out.println("Число " + num + " является палиндромом");
         } else {
-            System.out.println("Число " + initialNum + " не является палиндромом");
+            System.out.println("Число " + num + " не является палиндромом");
         }
         
         System.out.println("\n9. Определение, является ли число счастливым");
@@ -168,13 +166,13 @@ public class CyclesTheme {
 
         System.out.println("\n10. Вывод таблицы умножения Пифагора");
         System.out.printf("   |");
-        for(i = 2; i <= 9; i++) {
+        for(int i = 2; i <= 9; i++) {
             System.out.printf(" %2s", i);
         }
         System.out.println("\n___|________________________");
-        for(i = 2; i <= 9; i++) {
+        for(int i = 2; i <= 9; i++) {
             System.out.printf("%2s |", i);
-            for(j = i * 2; j <= i * 9; j += i) {
+            for(int j = i * 2; j <= i * 9; j += i) {
                 System.out.printf(" %2s", j);
             }
             System.out.println();
