@@ -134,7 +134,8 @@ public class CyclesTheme {
         int copyNum = num;
         while(copyNum > 0) {
             int digit = copyNum % 10;
-            reversedNum = digit + reversedNum * 10;
+            reversedNum *= 10;
+            reversedNum += digit;
             copyNum /= 10;
         }
         if(reversedNum == num) {
