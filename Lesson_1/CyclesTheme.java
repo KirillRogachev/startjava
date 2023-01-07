@@ -118,14 +118,14 @@ public class CyclesTheme {
             System.out.println();
             row++;
         } while(row < 5);
-        
+
         System.out.println("\n7. Отображение ASCII-символов");
         System.out.printf("%4s%4s%n", "Dec ", "Char");
         for(int i = 1; i < 48; i += 2) {
-            System.out.printf("%4d%4c%n", i, (char) i);
+            System.out.printf("%4d%4c%n", i, i);
         }
         for(int i = 98; i < 123; i += 2) {
-            System.out.printf("%4d%4c%n", i, (char) i);
+            System.out.printf("%4d%4c%n", i, i);
         }
 
         System.out.println("\n8. Проверка, является ли число палиндромом");
@@ -146,20 +146,19 @@ public class CyclesTheme {
         
         System.out.println("\n9. Определение, является ли число счастливым");
         num = 145334;
-        int first3Sum = 0;
-        int last3Sum = 0;
+        int leftHalfNum = 0;
+        int rightHalfNum = 0;
         while(num >= 1000) {
-            last3Sum += num % 10;
+            rightHalfNum += num % 10;
             num /= 10;
         }
-        System.out.println(" ");
         while(num > 0) {
-            first3Sum += num % 10;
+            leftHalfNum += num % 10;
             num /= 10;
         }
-        System.out.println("Сумма первых 3 цифр = " + first3Sum);
-        System.out.println("Сумма последних 3 цифр = " + first3Sum);
-        if(first3Sum == last3Sum) {
+        System.out.println("Сумма первых 3 цифр = " + leftHalfNum);
+        System.out.println("Сумма последних 3 цифр = " + rightHalfNum);
+        if(leftHalfNum == rightHalfNum) {
             System.out.println("Число счастливое");
         } else {
             System.out.println("Число не является счастливым");
