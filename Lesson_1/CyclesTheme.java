@@ -100,24 +100,16 @@ public class CyclesTheme {
         }
         System.out.println();
 
-        row = 0;
+        row = 1;
         do {
-            column = 0;
+            column = 1;
             do {
                 System.out.print("$");
-                    column++;
-                } while(column <= row);
+                column++; 
+            } while(column <= row && column <= 6 - row);
             System.out.println();
             row++;
-        } while(row < 3);
-        do {
-            do {
-                System.out.print("$");
-                    column--;
-                } while(column >= row - 1);
-            System.out.println();
-            row++;
-        } while(row < 5);
+        } while(row <= 5);
 
         System.out.println("\n7. Отображение ASCII-символов");
         System.out.printf("%4s%4s%n", "Dec ", "Char");
@@ -148,13 +140,16 @@ public class CyclesTheme {
         num = 145334;
         int leftHalfNum = 0;
         int rightHalfNum = 0;
-        while(num >= 1000) {
-            rightHalfNum += num % 10;
-            num /= 10;
-        }
+        counter = 0;
         while(num > 0) {
-            leftHalfNum += num % 10;
+            int digit = num % 10;
             num /= 10;
+            counter++;
+            if(counter <= 3) {
+                rightHalfNum += digit;
+            } else {
+                leftHalfNum += digit;
+            }
         }
         System.out.println("Сумма первых 3 цифр = " + leftHalfNum);
         System.out.println("Сумма последних 3 цифр = " + rightHalfNum);
