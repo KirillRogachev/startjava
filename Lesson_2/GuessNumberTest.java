@@ -10,17 +10,13 @@ public class GuessNumberTest {
         System.out.print("Введите имя второго игрока: ");
         Player player2 = new Player(scanner.nextLine());
         GuessNumber game = new GuessNumber(player1, player2);
-        String userAnswer;
+        String playerAnswer;
         do {
-            game.launchGame();
+            game.launch();
             do {
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
-                userAnswer = scanner.nextLine();
-                if(userAnswer.equals("yes") || userAnswer.equals("no")) {
-                    break;
-                }
-                System.out.println("Введен недопустимый ответ");
-            } while(true);
-        } while(userAnswer.equals("yes"));
+                playerAnswer = scanner.nextLine();
+            } while(!playerAnswer.equals("yes") && !playerAnswer.equals("no"));
+        } while(playerAnswer.equals("yes"));
     }
 }
