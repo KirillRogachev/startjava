@@ -3,7 +3,6 @@ public class Calculator {
     private int a;
     private int b;
     private char sign;
-    private double result;
 
     public void setA(int a) {
         this.a = a;
@@ -18,6 +17,7 @@ public class Calculator {
     }
 
     public void calculate() {
+        double result = 0;
         switch(sign) {
             case '+' : 
                 result = a + b;
@@ -30,6 +30,9 @@ public class Calculator {
                 break;
             case '/' :
                 result = (double) a / b;
+                break;
+            case '%' :
+                result = a % b;
                 break;
             case '^' :
                 result = 1;
