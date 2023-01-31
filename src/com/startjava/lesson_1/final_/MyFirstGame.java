@@ -1,3 +1,5 @@
+package src.com.startjava.lesson_1.final_;
+
 public class MyFirstGame {
     public static void main(String[] args) {
         int compNum = 46;

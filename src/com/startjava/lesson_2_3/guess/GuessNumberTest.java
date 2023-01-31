@@ -1,3 +1,5 @@
+package src.com.startjava.lesson_2_3.guess;
+
 import java.util.Scanner;
 import java.nio.charset.Charset;
 
