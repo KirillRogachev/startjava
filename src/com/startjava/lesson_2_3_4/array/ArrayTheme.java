@@ -11,10 +11,10 @@ public class ArrayTheme {
         printIntArr(intArr);
         System.out.println();
         for(int i = 0; i < length; i++) {
-            int temp = intArr[i]; 
-            intArr[i] = intArr[length - 1];
-            intArr[length - 1] = temp;
             length--;
+            int temp = intArr[i]; 
+            intArr[i] = intArr[length];
+            intArr[length] = temp;
         }
         printIntArr(intArr);
 
@@ -52,14 +52,14 @@ public class ArrayTheme {
         System.out.println("\nКоличество обнуленных ячеек: " + counter);
 
         System.out.println("\n 4. Вывод элементов массива лесенкой в обратном порядке");
-        char[] Letters = new char[26];
-        length = Letters.length;
+        char[] alphabet = new char[26];
+        length = alphabet.length;
         for(int i = 0; i < length; i++) {
-            Letters[i] = (char) ('A' + i);
+            alphabet[i] = (char) ('A' + i);
         }
         String previousLine = "";
         for(int i = length - 1; i >= 0; i--) {
-            System.out.println(previousLine += Letters[i]);
+            System.out.println(previousLine += alphabet[i]);
         }
 
         System.out.println("\n 5. Генерация уникальных чисел");
@@ -98,27 +98,25 @@ public class ArrayTheme {
 
         System.out.println("\n6.Сдвиг элементов массива");
         String[] srcStringArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        length = 0;
-        for(int i = 0; i < srcStringArr.length; i++) {
-            if(!srcStringArr[i].isBlank()) {
-                length++;
+        int srcArrLen = srcStringArr.length;
+        int destArrLen = 0;
+        for(String string: srcStringArr) {
+            if(!string.isBlank()) {
+                destArrLen++;
             }
         }
-        String[] destStringArr = new String[length];
+        System.out.println(srcArrLen);
+        System.out.println(destArrLen);
+        String[] destStringArr = new String[destArrLen];
         int destPos = 0;
         int blockLength;
-        for(int i = 0; i < srcStringArr.length; ) {
-            if(!srcStringArr[i].isBlank()){
-                blockLength = 0;
-                for(int j = i; !srcStringArr[j].isBlank() && j < srcStringArr.length; j++) {
-                    blockLength++;
-                }
-                System.arraycopy(srcStringArr, i, destStringArr, destPos, blockLength);
-                destPos += blockLength;
-                i += blockLength;
-            } else {
-                i++;
+        for(int i = 0; i < srcArrLen; i = i + blockLength + 1) {
+            blockLength = 0;
+            for(int j = i; !srcStringArr[j].isBlank() && j < srcArrLen; j++) {
+                blockLength++;
             }
+            System.arraycopy(srcStringArr, i, destStringArr, destPos, blockLength);
+            destPos += blockLength;
         }
         System.out.println(Arrays.toString(srcStringArr));
         System.out.println(Arrays.toString(destStringArr));
