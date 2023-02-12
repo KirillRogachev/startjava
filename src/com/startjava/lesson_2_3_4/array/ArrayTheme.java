@@ -11,9 +11,8 @@ public class ArrayTheme {
         printIntArr(intArr);
         System.out.println();
         for(int i = 0; i < length; i++) {
-            length--;
-            int temp = intArr[i]; 
-            intArr[i] = intArr[length];
+            int temp = intArr[i];
+            intArr[i] = intArr[--length];
             intArr[length] = temp;
         }
         printIntArr(intArr);
@@ -39,7 +38,6 @@ public class ArrayTheme {
             doubleArr[i] = Math.random();
         }
         printDoubleArr(doubleArr);
-        System.out.println("\n");
         double middleCell = doubleArr[length / 2];
         int counter = 0;
         for(int i = 0; i < length; i++) {
@@ -49,7 +47,7 @@ public class ArrayTheme {
             }
         }
         printDoubleArr(doubleArr);
-        System.out.println("\nКоличество обнуленных ячеек: " + counter);
+        System.out.println("Количество обнуленных ячеек: " + counter);
 
         System.out.println("\n 4. Вывод элементов массива лесенкой в обратном порядке");
         char[] alphabet = new char[26];
@@ -98,20 +96,20 @@ public class ArrayTheme {
 
         System.out.println("\n6.Сдвиг элементов массива");
         String[] srcStringArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        int srcArrLen = srcStringArr.length;
-        int destArrLen = 0;
-        for(String string: srcStringArr) {
+        int srcArrLength = srcStringArr.length;
+        int destArrLength = 0;
+        for(String string : srcStringArr) {
             if(!string.isBlank()) {
-                destArrLen++;
+                destArrLength++;
             }
         }
 
-        String[] destStringArr = new String[destArrLen];
+        String[] destStringArr = new String[destArrLength];
         int destPos = 0;
         int blockLength;
-        for(int i = 0; i < srcArrLen; i = i + blockLength + 1) {
+        for(int i = 0; i < srcArrLength; i += blockLength + 1) {
             blockLength = 0;
-            for(int j = i; !srcStringArr[j].isBlank() && j < srcArrLen; j++) {
+            for(int j = i; !srcStringArr[j].isBlank() && j < srcArrLength; j++) {
                 blockLength++;
             }
             System.arraycopy(srcStringArr, i, destStringArr, destPos, blockLength);
@@ -134,5 +132,6 @@ public class ArrayTheme {
             }
             System.out.printf("%7.3f", doubleArr[i]);
         }
+        System.out.println("\n");
     }
 }
