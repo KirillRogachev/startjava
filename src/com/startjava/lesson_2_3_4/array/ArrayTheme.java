@@ -105,8 +105,7 @@ public class ArrayTheme {
                 destArrLen++;
             }
         }
-        System.out.println(srcArrLen);
-        System.out.println(destArrLen);
+
         String[] destStringArr = new String[destArrLen];
         int destPos = 0;
         int blockLength;
