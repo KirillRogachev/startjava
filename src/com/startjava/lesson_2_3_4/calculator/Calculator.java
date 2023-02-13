@@ -1,10 +1,11 @@
 package src.com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    
+
     private int a;
     private int b;
     private char sign;
+    private String userInput;
 
     public void setA(int a) {
         this.a = a;
@@ -18,31 +19,36 @@ public class Calculator {
         this.sign = sign;
     }
 
-    public void calculate() {
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
+    }
+
+    public double calculate() {
+        String[] inputItems = userInput.split(" ");
+        a = Integer.parseInt(inputItems[0]);
+        sign = inputItems[1].charAt(0);
+        b = Integer.parseInt(inputItems[2]);
         double result = 0;
         switch(sign) {
             case '+' : 
-                result = a + b;
+                result = Math.addExact(a, b);
                 break;
             case '-' :
-                result = a - b;
+                result = Math.subtractExact(a, b);
                 break;
             case '*' :
-                result = a * b;
+                result = Math.multiplyExact(a, b);
                 break;
             case '/' :
                 result = (double) a / b;
                 break;
             case '%' :
-                result = a % b;
+                result = Math.floorMod(a, b);
                 break;
             case '^' :
-                result = 1;
-                for(int i = 0; i < b; i++) {
-                    result *= a;
-                }
+                result = Math.pow(a, b);
                 break;
         }
-        System.out.println("Результат = " + result);
+        return result;
     }
 }

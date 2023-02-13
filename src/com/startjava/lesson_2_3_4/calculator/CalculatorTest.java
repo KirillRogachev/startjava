@@ -1,25 +1,24 @@
 package src.com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class CalculatorTest {
     
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
-        String userAnswer;
-        do {
-            System.out.print("Введите первое число: ");
-            calculator.setA(scanner.nextInt());
-            System.out.print("Введите знак математической операции: ");
-            calculator.setSign(scanner.next().charAt(0));
-            System.out.print("Введите второе число: ");
-            calculator.setB(scanner.nextInt());
-            calculator.calculate();
-            do {
-                System.out.println("Хотите продолжить вычисления? [yes/no]:");
-                userAnswer = scanner.next();
-            } while(!userAnswer.equals("yes") && !userAnswer.equals("no"));
-        } while(userAnswer.equals("yes"));
+        String userAnswer = "yes";
+        DecimalFormat format = new DecimalFormat();
+        format.setDecimalSeparatorAlwaysShown(false);
+        while(!userAnswer.equals("no")) {
+            if(userAnswer.equals("yes")) {
+                System.out.print("Введите математическое выражение: ");
+                calculator.setUserInput(scanner.nextLine());
+                System.out.println("Результат = " + format.format(calculator.calculate()));
+            }
+            System.out.println("Хотите продолжить вычисления? [yes/no]:");
+            userAnswer = scanner.nextLine();
+        }
     }
 }
