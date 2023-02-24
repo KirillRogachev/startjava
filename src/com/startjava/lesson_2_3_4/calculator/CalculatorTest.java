@@ -10,7 +10,11 @@ public class CalculatorTest {
         while(!userAnswer.equals("no")) {
             if(userAnswer.equals("yes")) {
                 System.out.print("Введите математическое выражение: ");
-                System.out.format("Результат = %f\n", Calculator.calculate(scanner.nextLine()));
+                try {
+                    System.out.format("Результат = %f\n", Calculator.calculate(scanner.nextLine()));
+                } catch (NumberFormatException e) {
+                    System.out.println("Можно вводить только целые числа");
+                }
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
             userAnswer = scanner.nextLine();
