@@ -14,6 +14,8 @@ public class CalculatorTest {
                     System.out.format("Результат = %f\n", Calculator.calculate(scanner.nextLine()));
                 } catch (NumberFormatException e) {
                     System.out.println("Можно вводить только целые числа");
+                } catch (ArithmeticException e) {
+                    System.out.println("Можно вводить только положительные числа");
                 }
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
