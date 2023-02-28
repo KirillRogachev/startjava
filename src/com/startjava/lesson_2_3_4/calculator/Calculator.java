@@ -8,7 +8,7 @@ public class Calculator {
         char sign = partsExpression[1].charAt(0);
         int b = Integer.parseInt(partsExpression[2]);
         if(checkNegativeNumbers(a, b)) {
-            throw new ArithmeticException();
+            throw new ArithmeticException("Можно вводить только положительные числа");
         }
         return switch(sign) {
             case '+' -> Math.addExact(a, b);
@@ -18,16 +18,13 @@ public class Calculator {
             case '%' -> Math.floorMod(a, b);
             case '^' -> Math.pow(a, b);
             default -> {
-                System.out.println("Такая операция не поддерживается");
+                System.out.println("Операция " + sign +" не поддерживается");
                 yield 0;
             }
         };
     }
 
     private static boolean checkNegativeNumbers(int a, int b) {
-        if(a <= 0 || b <= 0) {
-            return true;
-        }
-        return false;
+        return (a <= 0 || b <= 0) ? true : false;
     }
 }

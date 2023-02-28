@@ -11,11 +11,11 @@ public class CalculatorTest {
             if(userAnswer.equals("yes")) {
                 System.out.print("Введите математическое выражение: ");
                 try {
-                    System.out.format("Результат = %f\n", Calculator.calculate(scanner.nextLine()));
+                    System.out.printf("Результат = %f\n", Calculator.calculate(scanner.nextLine()));
                 } catch (NumberFormatException e) {
                     System.out.println("Можно вводить только целые числа");
                 } catch (ArithmeticException e) {
-                    System.out.println("Можно вводить только положительные числа");
+                    System.out.println(e.getMessage());
                 }
             }
             System.out.println("Хотите продолжить вычисления? [yes/no]:");
