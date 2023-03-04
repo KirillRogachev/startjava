@@ -15,10 +15,6 @@ public class GuessNumberTest {
         while(!playerAnswer.equals("no")) {
             if(playerAnswer.equals("yes")) {
                 game.launch();
-                player1.clearNumbers();
-                player2.clearNumbers();
-                player1.setAttempt(0);
-                player2.setAttempt(0);
             }
             System.out.print("\nХотите продолжить игру? [yes/no]: ");
             playerAnswer = scanner.nextLine();

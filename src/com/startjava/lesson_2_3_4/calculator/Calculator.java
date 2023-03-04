@@ -7,7 +7,7 @@ public class Calculator {
         int a = Integer.parseInt(partsExpression[0]);
         char sign = partsExpression[1].charAt(0);
         int b = Integer.parseInt(partsExpression[2]);
-        if(checkNegativeNumbers(a, b)) {
+        if(!isPositiveNumbers(a, b)) {
             throw new ArithmeticException("Можно вводить только положительные числа");
         }
         return switch(sign) {
@@ -24,7 +24,7 @@ public class Calculator {
         };
     }
 
-    private static boolean checkNegativeNumbers(int a, int b) {
-        return (a <= 0 || b <= 0) ? true : false;
+    private static boolean isPositiveNumbers(int a, int b) {
+        return (a > 0 && b > 0);
     }
 }
