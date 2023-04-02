@@ -6,25 +6,18 @@ public class GuessNumber {
     
     private int secretNum;
     private Player[] players;
+    static final int ROUNDS_QUANTITY = 3;
 
     public GuessNumber(Player... players) {
         this.players = players;
     }
 
     public void launch() {
-        System.out.println("Бросаем жребий");
-        for(int i = players.length - 1; i >= 1; i--) {
-            int j = (int) (Math.random() * (i + 1));
-            Player temp = players[j];
-            players[j] = players[i];
-            players[i] = temp;
-        }
-        System.out.println("Порядок угадывания числа: " + players[0].getName() + ", " + players[1].getName() +
-                ", " + players[2].getName());
-        System.out.print("У каждого игрока по 10 попыток");
+        drawLots();
+        System.out.print("\nУ каждого игрока по 10 попыток");
         Scanner scanner = new Scanner(System.in);
 
-        for(int i = 1; i <= 3; i++) {
+        for(int i = 1; i <= ROUNDS_QUANTITY; i++) {
             System.out.println("\n\nРаунд " + i);
             secretNum = (int) (Math.random() * 100 + 1);
             nextRound:
@@ -48,12 +41,10 @@ public class GuessNumber {
                     }
                 }
             }
-            printNumbers(players[0]);
-            printNumbers(players[1]);
-            printNumbers(players[2]);
-            players[0].clearAttempts();
-            players[1].clearAttempts();
-            players[2].clearAttempts();
+            for(Player player : players) {
+                printNumbers(player);
+                player.clearAttempts();
+            }
         }
 
         System.out.println("\n\nИтог игры");
@@ -66,10 +57,23 @@ public class GuessNumber {
         } else {
             System.out.println("Ничья");
         }
+        for(Player player : players) {
+            player.clearWinsCount();
+        }
+    }
 
-        players[0].clearWinsCount();
-        players[1].clearWinsCount();
-        players[2].clearWinsCount();
+    private void drawLots() {
+        System.out.println("Бросаем жребий");
+        for (int i = players.length - 1; i >= 1; i--) {
+            int j = (int) (Math.random() * (i + 1));
+            Player temp = players[j];
+            players[j] = players[i];
+            players[i] = temp;
+        }
+        System.out.print("Порядок угадывания числа: ");
+        for(int i = 0; i < players.length; i++) {
+            System.out.print(players[i].getName()+ "  ");
+        }
     }
 
     private boolean checkNumber(Player player) {
