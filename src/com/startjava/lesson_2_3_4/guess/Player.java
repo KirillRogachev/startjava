@@ -7,7 +7,9 @@ public class Player {
     private String name;
     private int[] numbers = new int[10];
     private int attempt;
-    private int winsCount;
+    private int score;
+    static final int MIN_NUMBER = 0;
+    static final int MAX_NUMBER = 100;
 
     public Player(String name) {
         this.name = name;
@@ -18,7 +20,7 @@ public class Player {
     }
 
     public void addNumber(int number) {
-        if(number <= 0 || number > 100) {
+        if(number <= MIN_NUMBER || number > MAX_NUMBER) {
             throw new NumberFormatException("Число должно быть больше 0 и меньше либо равно 100. Повторите ввод: ");
         }
         numbers[attempt++] = number;
@@ -32,16 +34,16 @@ public class Player {
         return attempt;
     }
 
-    public int getWinsCount() {
-        return winsCount;
+    public int getScore() {
+        return score;
     }
 
-    public void addWinsCount() {
-        winsCount++;
+    public void incrementScore() {
+        score++;
     }
 
-    public void clearWinsCount() {
-        winsCount = 0;
+    public void clearScore() {
+        score = 0;
     }
 
     public int[] getNumbers() {

@@ -6,13 +6,8 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        final int PLAYERS_QUANTITY = 3;
-        Player[] players = new Player[PLAYERS_QUANTITY];
-        for(int i = 0; i < PLAYERS_QUANTITY; i++) {
-            System.out.print("Введите имя игрока " + (i + 1) + ": ");
-            players[i] = new Player(scanner.nextLine());
-        }
-        GuessNumber game = new GuessNumber(players);
+        int playersQuantity = 3;
+        GuessNumber game = new GuessNumber(createPlayers(playersQuantity));
         String playerAnswer = "yes";
         while(!playerAnswer.equals("no")) {
             if(playerAnswer.equals("yes")) {
@@ -21,5 +16,15 @@ public class GuessNumberTest {
             System.out.print("\nХотите продолжить игру? [yes/no]: ");
             playerAnswer = scanner.nextLine();
         }
+    }
+
+    private static Player[] createPlayers(int playersQuantity) {
+        Scanner scanner = new Scanner(System.in);
+        Player[] players = new Player[playersQuantity];
+        for(int i = 0; i < playersQuantity; i++) {
+            System.out.print("Введите имя игрока " + (i + 1) + ": ");
+            players[i] = new Player(scanner.nextLine());
+        }
+        return players;
     }
 }
