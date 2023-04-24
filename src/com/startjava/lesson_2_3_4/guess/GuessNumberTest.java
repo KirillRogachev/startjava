@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
+    private static final int playersQuantity = 3;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int playersQuantity = 3;
         GuessNumber game = new GuessNumber(createPlayers(playersQuantity));
         String playerAnswer = "yes";
         while(!playerAnswer.equals("no")) {
