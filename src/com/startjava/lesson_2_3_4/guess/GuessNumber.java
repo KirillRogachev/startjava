@@ -21,20 +21,20 @@ public class GuessNumber {
         for(int i = 1; i <= ROUNDS_LIMIT; i++) {
             System.out.println("\n\nРаунд " + i);
             secretNum = (int) (Math.random() * 100 + 1);
-            boolean isSecretNumFound = false;
-            while(!isSecretNumFound) {
+            boolean guessed = false;
+            while(!guessed) {
                 for(Player player : players) {
                     System.out.print(player.getName() + ", ваш ход: ");
                     addNumber(player, scanner);
                     if(isGuessed(player)) {
-                        isSecretNumFound = true;
+                        guessed = true;
                         break;
                     }
                     if(player.getAttempt() == ATTEMPT_LIMIT) {
                         System.out.println("У игрока " + player.getName() + " закончились попытки");
                     }
                 }
-                if(players[players.length - 1].getAttempt() == ATTEMPT_LIMIT) break;
+                if(checkAttemptsLimitReached()) break;
             }
             printPlayersNumbers();
             for(Player player : players) {
@@ -80,6 +80,10 @@ public class GuessNumber {
         System.out.println("Число " + number + (number > secretNum ? " больше" : " меньше") +
                 " того, что загадал компьютер");
         return false;
+    }
+
+    private boolean checkAttemptsLimitReached() {
+        return (players[players.length - 1].getAttempt() == ATTEMPT_LIMIT ? true : false);
     }
 
     private void printPlayersNumbers() {

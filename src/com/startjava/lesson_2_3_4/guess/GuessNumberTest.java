@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
-    private static final int playersQuantity = 3;
+    private static final int COUNT_PLAYERS = 3;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        GuessNumber game = new GuessNumber(createPlayers(playersQuantity));
+        GuessNumber game = new GuessNumber(createPlayers(COUNT_PLAYERS));
         String playerAnswer = "yes";
         while(!playerAnswer.equals("no")) {
             if(playerAnswer.equals("yes")) {
@@ -19,10 +19,10 @@ public class GuessNumberTest {
         }
     }
 
-    private static Player[] createPlayers(int playersQuantity) {
+    private static Player[] createPlayers(int countPlayers) {
         Scanner scanner = new Scanner(System.in);
-        Player[] players = new Player[playersQuantity];
-        for(int i = 0; i < playersQuantity; i++) {
+        Player[] players = new Player[countPlayers];
+        for(int i = 0; i < countPlayers; i++) {
             System.out.print("Введите имя игрока " + (i + 1) + ": ");
             players[i] = new Player(scanner.nextLine());
         }

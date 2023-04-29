@@ -28,19 +28,19 @@ public class Player {
         return numbers[attempt - 1];
     }
 
+    public void addNumber(int number) {
+        if(number < START_RANGE || number > END_RANGE) {
+            throw new NumberFormatException("Число должно быть больше 0 и меньше либо равно 100. Повторите ввод: ");
+        }
+        numbers[attempt++] = number;
+    }
+
     public int getAttempt() {
         return attempt;
     }
 
     public int getScore() {
         return score;
-    }
-
-    public void addNumber(int number) {
-        if(number < START_RANGE || number > END_RANGE) {
-            throw new NumberFormatException("Число должно быть больше 0 и меньше либо равно 100. Повторите ввод: ");
-        }
-        numbers[attempt++] = number;
     }
 
     public void incrementScore() {
