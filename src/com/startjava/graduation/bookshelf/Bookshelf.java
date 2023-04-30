@@ -13,7 +13,7 @@ public class Bookshelf {
     public Book findBook(String nameToFind) {
         try {
             for (Book book : books) {
-                if (book.getName().equals(nameToFind)) {
+                if (book.getTitle().equals(nameToFind)) {
                     return book;
                 }
 
@@ -24,11 +24,15 @@ public class Bookshelf {
         return null;
     }
 
-    public void deleteBook (String nameToDelete) {
+    public void deleteBook (String title) {
         for (Book book : books) {
-            if (book.getName().equals(nameToDelete)) {
+            if (book.getTitle().equals(title)) {
                 book = null;
             }
         }
+    }
+
+    public void clearBookshelf() {
+
     }
 }
