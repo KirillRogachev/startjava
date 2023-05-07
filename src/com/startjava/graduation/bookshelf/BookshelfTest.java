@@ -7,8 +7,10 @@ public class BookshelfTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf();
-        System.out.println("Шкаф пуст. Вы можете добавить в него первую книгу");
-        while(true) {
+        String emptyBookshelf = "Шкаф пуст. Вы можете добавить в него первую книгу";
+        System.out.println(emptyBookshelf);
+        boolean continueWork = true;
+        while(continueWork) {
             System.out.println("""
                     1. Добавить книгу
                     2. Найти книгу
@@ -16,30 +18,40 @@ public class BookshelfTest {
                     4. Очистить шкаф
                     5. Завершить
                     """);
-            int selectedAction = scanner.nextInt();
-            if (selectedAction == 1) {
-                System.out.print("Введите автора книги: ");
-                String author = scanner.next();
-                System.out.print("Введите название книги: ");
-                String title = scanner.next();
-                System.out.print("Введите год издания: ");
-                int publishYear = scanner.nextInt();
-                bookshelf.addBook(author, title, publishYear);
+            int selectedAction = Integer.parseInt(scanner.nextLine());
+            switch (selectedAction) {
+                case 1:
+                    System.out.print("Введите автора книги: ");
+                    String author = scanner.nextLine();
+                    System.out.print("Введите название книги: ");
+                    String title = scanner.nextLine();
+                    System.out.print("Введите год издания: ");
+                    int publishYear = Integer.parseInt(scanner.nextLine());
+                    bookshelf.addBook(author, title, publishYear);
+                    break;
+                case 2:
+                    System.out.print("Введите название книги, которую нужно найти: ");
+                    title = scanner.nextLine();
+                    System.out.println(bookshelf.findBook(title));
+                    break;
+                case 3:
+                    System.out.print("Введите название книги, которую нужно удалить: ");
+                    title = scanner.nextLine();
+                    bookshelf.deleteBook(title);
+                    break;
+                case 4:
+                    bookshelf.clear();
+                    System.out.println(emptyBookshelf);
+                    break;
+                case 5:
+                    continueWork = false;
+                    break;
+                default:
+                    break;
             }
-            if (selectedAction == 2) {
-                System.out.print("Введите название книги, которую нужно найти: ");
-                String title = scanner.next();
-                System.out.println(bookshelf.findBook(title));
-            }
-            if (selectedAction == 3) {
-                System.out.print("Введите название книги, которую нужно удалить: ");
-                String title = scanner.next();
-                bookshelf.deleteBook(title);
-            }
-            if (selectedAction == 4) {
-                bookshelf.clearBookshelf();
-            }
-            if (selectedAction == 5) break;
+            System.out.print("Для продолжения работы нажмите Enter");
+            scanner.nextLine();
+            bookshelf.showContent();
         }
     }
 }

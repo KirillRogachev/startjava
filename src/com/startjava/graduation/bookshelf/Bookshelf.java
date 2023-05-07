@@ -2,19 +2,24 @@ package src.com.startjava.graduation.bookshelf;
 
 public class Bookshelf {
 
-    private int booksQuantity;
-    private Book[] books = new Book[10];
-    private int lastBookIndex = 0;
+    private static final int SHELF_NUM = 10;
+    private Book[] books = new Book[SHELF_NUM];
+    private int firstEmptyShelf;
+    private int maxRecordLen;
 
-    public void addBook(String author, String name, int yearOfPublication) {
-        books[lastBookIndex++] = new Book(author, name, yearOfPublication);
+    public void addBook(String author, String name, int publishYear) {
+        books[firstEmptyShelf] = new Book(author, name, publishYear);
+        if(books[firstEmptyShelf].toString().length() > maxRecordLen) {
+            maxRecordLen = books[firstEmptyShelf].toString().length();
+        }
+        firstEmptyShelf++;
     }
 
-    public Book findBook(String nameToFind) {
+    public String findBook(String titleToFind) {
         try {
-            for (Book book : books) {
-                if (book.getTitle().equals(nameToFind)) {
-                    return book;
+            for (int i = 0; i < firstEmptyShelf; i++) {
+                if (books[i].getTitle().equals(titleToFind)) {
+                    return books[i].toString();
                 }
 
             }
@@ -25,14 +30,45 @@ public class Bookshelf {
     }
 
     public void deleteBook (String title) {
-        for (Book book : books) {
-            if (book.getTitle().equals(title)) {
-                book = null;
+        int deletedRecordLen = 0;
+        for(int i = 0; i < firstEmptyShelf; i++) {
+            if(books[i].getTitle().equals(title)) {
+                deletedRecordLen = books[i].toString().length();
+                books[i] = null;
+                System.arraycopy(books, i + 1, books, i, firstEmptyShelf - i - 1);
+                books[--firstEmptyShelf] = null;
+                break;
+            }
+        }
+        if(deletedRecordLen == maxRecordLen) {
+            maxRecordLen = 0;
+            for(int i = 0; i < firstEmptyShelf; i++) {
+                if(books[i].toString().length() > maxRecordLen) {
+                    maxRecordLen = books[i].toString().length();
+                }
             }
         }
     }
 
-    public void clearBookshelf() {
-
+    public void clear() {
+        for(int i = 0; i < firstEmptyShelf; i++) {
+            books[i] = null;
+        }
     }
+
+    public void showContent() {
+//        String Separator = "-";
+//        for(int i = 1; i < maxRecordLength; i++) {
+//            Separator += "-";
+//        }
+        for(int i = 0; i < firstEmptyShelf; i++) {
+            System.out.printf("|%-" + maxRecordLen + "s|\n", books[i]);
+            //System.out.printf("|%-" + maxRecordLength + "s|\n", Separator);
+            System.out.println("|" + "-".repeat(maxRecordLen) + "|");
+        }
+        if(firstEmptyShelf < SHELF_NUM) {
+            System.out.println("|" + " ".repeat(maxRecordLen) + "|");
+        }
+    }
+
 }
