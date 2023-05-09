@@ -4,14 +4,16 @@ public class Book {
     private String author;
     private String title;
     private int publishYear;
-
-    public String getAuthor() { return author; }
+    private int recordLen;
 
     public String getTitle() {
         return title;
     }
 
-    public int getPublishYear() { return publishYear; }
+    public int getRecordLen() {
+        recordLen = (author + ", " + title + ", " + publishYear).length();
+        return recordLen;
+    }
 
     public Book(String author, String title, int publishYear) {
         this.author = author;
@@ -20,6 +22,6 @@ public class Book {
     }
 
     public String toString() {
-        return getAuthor() + ", " + getTitle() + ", " + getPublishYear();
+        return author + ", " + title + ", " + publishYear;
     }
 }

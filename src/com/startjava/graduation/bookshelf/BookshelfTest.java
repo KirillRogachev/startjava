@@ -28,16 +28,17 @@ public class BookshelfTest {
                     System.out.print("Введите год издания: ");
                     int publishYear = Integer.parseInt(scanner.nextLine());
                     bookshelf.addBook(author, title, publishYear);
+                    bookshelf.showContent();
                     break;
                 case 2:
                     System.out.print("Введите название книги, которую нужно найти: ");
-                    title = scanner.nextLine();
-                    System.out.println(bookshelf.findBook(title));
+                    System.out.println(bookshelf.findBook(scanner.nextLine()));
+                    bookshelf.showContent();
                     break;
                 case 3:
                     System.out.print("Введите название книги, которую нужно удалить: ");
-                    title = scanner.nextLine();
-                    bookshelf.deleteBook(title);
+                    bookshelf.deleteBook(scanner.nextLine());
+                    bookshelf.showContent();
                     break;
                 case 4:
                     bookshelf.clear();
@@ -47,11 +48,11 @@ public class BookshelfTest {
                     continueWork = false;
                     break;
                 default:
+                    System.out.println("Введено недопустимое значение. Введите номер операции из меню.");
                     break;
             }
             System.out.print("Для продолжения работы нажмите Enter");
             scanner.nextLine();
-            bookshelf.showContent();
         }
     }
 }

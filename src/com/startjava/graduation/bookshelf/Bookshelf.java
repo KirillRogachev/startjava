@@ -7,10 +7,12 @@ public class Bookshelf {
     private int firstEmptyShelf;
     private int maxRecordLen;
 
+    public int getFirstEmptyShelf() { return firstEmptyShelf; }
+
     public void addBook(String author, String name, int publishYear) {
         books[firstEmptyShelf] = new Book(author, name, publishYear);
-        if(books[firstEmptyShelf].toString().length() > maxRecordLen) {
-            maxRecordLen = books[firstEmptyShelf].toString().length();
+        if(books[firstEmptyShelf].getRecordLen() > maxRecordLen) {
+            maxRecordLen = books[firstEmptyShelf].getRecordLen();
         }
         firstEmptyShelf++;
     }
@@ -33,7 +35,7 @@ public class Bookshelf {
         int deletedRecordLen = 0;
         for(int i = 0; i < firstEmptyShelf; i++) {
             if(books[i].getTitle().equals(title)) {
-                deletedRecordLen = books[i].toString().length();
+                deletedRecordLen = books[i].getRecordLen();
                 books[i] = null;
                 System.arraycopy(books, i + 1, books, i, firstEmptyShelf - i - 1);
                 books[--firstEmptyShelf] = null;
@@ -43,8 +45,8 @@ public class Bookshelf {
         if(deletedRecordLen == maxRecordLen) {
             maxRecordLen = 0;
             for(int i = 0; i < firstEmptyShelf; i++) {
-                if(books[i].toString().length() > maxRecordLen) {
-                    maxRecordLen = books[i].toString().length();
+                if(books[i].getRecordLen() > maxRecordLen) {
+                    maxRecordLen = books[i].getRecordLen();
                 }
             }
         }
@@ -54,16 +56,15 @@ public class Bookshelf {
         for(int i = 0; i < firstEmptyShelf; i++) {
             books[i] = null;
         }
+        firstEmptyShelf = 0;
+        maxRecordLen = 0;
     }
 
     public void showContent() {
-//        String Separator = "-";
-//        for(int i = 1; i < maxRecordLength; i++) {
-//            Separator += "-";
-//        }
+        System.out.println("\nВ шкафу " + firstEmptyShelf + " книг(и) и свободно " + (SHELF_NUM - firstEmptyShelf) +
+            " полок.\n");
         for(int i = 0; i < firstEmptyShelf; i++) {
             System.out.printf("|%-" + maxRecordLen + "s|\n", books[i]);
-            //System.out.printf("|%-" + maxRecordLength + "s|\n", Separator);
             System.out.println("|" + "-".repeat(maxRecordLen) + "|");
         }
         if(firstEmptyShelf < SHELF_NUM) {
