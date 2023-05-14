@@ -1,43 +1,49 @@
 package src.com.startjava.graduation.bookshelf;
 
+import java.util.Arrays;
+
 public class Bookshelf {
 
-    private static final int SHELVES_NUM = 10;
+    public static final int SHELVES_NUM = 10;
     private Book[] books = new Book[SHELVES_NUM];
     private int booksNum;
-    private int maxRecordLen;
+    private int maxLength;
 
-    public int getBooksNum() {return booksNum;}
+    public Book[] getAllBooks() { return books; }
 
-    public int getEmptyShelvesNum() {return (SHELVES_NUM - booksNum);}
+    public int getBooksNum() { return booksNum; }
 
-    public void addBook(String author, String name, int publishYear) {
-        try {
+    public int getMaxLength() { return maxLength; }
+
+    public int getEmptyShelvesNum() { return (SHELVES_NUM - booksNum); }
+
+    public void add(String author, String name, int publishYear) {
+        if(booksNum >= SHELVES_NUM) {
+            System.out.println("Книга не может быть сохранена. Шкаф полностью заполнен.");
+        } else {
             books[booksNum] = new Book(author, name, publishYear);
-            if (books[booksNum].getRecordLen() > maxRecordLen) {
-                maxRecordLen = books[booksNum].getRecordLen();
+            if(books[booksNum].getLength() > maxLength) {
+                maxLength = books[booksNum].getLength();
             }
             booksNum++;
-        } catch(ArrayIndexOutOfBoundsException e) {
-            System.out.println("Книга не может быть сохранена. Шкаф полностью заполнен.");
         }
     }
 
-    public String findBook(String titleToFind) {
-            for (int i = 0; i < booksNum; i++) {
-                if (books[i].getTitle().equals(titleToFind)) {
-                    return books[i].toString();
+    public Book find(String title) {
+            for(int i = 0; i < booksNum; i++) {
+                if(books[i].getTitle().equals(title)) {
+                    return books[i];
                 }
             }
-            return "Книга не найдена";
+            throw new IllegalArgumentException("Книга не найдена");
     }
 
-    public void deleteBook (String searchedTitle) {
-        int deletedRecordLen = 0;
+    public void delete(String title) {
+        int deletedRecordLength = 0;
         boolean bookFound = false;
         for(int i = 0; i < booksNum; i++) {
-            if(books[i].getTitle().equals(searchedTitle)) {
-                deletedRecordLen = books[i].getRecordLen();
+            if(books[i].getTitle().equals(title)) {
+                deletedRecordLength = books[i].getLength();
                 books[i] = null;
                 System.arraycopy(books, i + 1, books, i, booksNum - i - 1);
                 books[--booksNum] = null;
@@ -48,33 +54,19 @@ public class Bookshelf {
         if(!bookFound) {
             System.out.println("Книга не найдена");
         }
-        if(deletedRecordLen == maxRecordLen) {
-            maxRecordLen = 0;
+        if(deletedRecordLength == maxLength) {
+            maxLength = 0;
             for(int i = 0; i < booksNum; i++) {
-                if(books[i].getRecordLen() > maxRecordLen) {
-                    maxRecordLen = books[i].getRecordLen();
+                if(books[i].getLength() > maxLength) {
+                    maxLength = books[i].getLength();
                 }
             }
         }
     }
 
     public void clear() {
-        for(int i = 0; i < booksNum; i++) {
-            books[i] = null;
-        }
+        Arrays.fill(books, null);
         booksNum = 0;
-        maxRecordLen = 0;
+        maxLength = 0;
     }
-
-    public void showContent() {
-        System.out.println();
-        for(int i = 0; i < booksNum; i++) {
-            System.out.printf("|%-" + maxRecordLen + "s|\n", books[i]);
-            System.out.println("|" + "-".repeat(maxRecordLen) + "|");
-        }
-        if(booksNum < SHELVES_NUM) {
-            System.out.println("|" + " ".repeat(maxRecordLen) + "|");
-        }
-    }
-
 }
