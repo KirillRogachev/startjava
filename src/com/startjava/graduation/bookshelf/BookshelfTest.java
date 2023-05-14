@@ -55,7 +55,6 @@ public class BookshelfTest {
                     4. Очистить шкаф
                     5. Завершить
                     """);
-
     }
 
     private static void inputBookData(Bookshelf bookshelf, Scanner scanner) {
