@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class BookshelfTest {
 
-    private static String emptyBookshelf = "Шкаф пуст. Вы можете добавить в него первую книгу";
+    private static final String EMPTY_BOOKSHELF = "Шкаф пуст. Вы можете добавить в него первую книгу";
     private static boolean continueWork = true;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf();
-        System.out.println(emptyBookshelf);
+        System.out.println(EMPTY_BOOKSHELF);
         while(continueWork) {
             System.out.println("\nВ шкафу " + bookshelf.getNumBooks() + " книг(и) и свободно " +
                     bookshelf.getNumEmptyShelves() + " полок.\n");
@@ -56,7 +56,7 @@ public class BookshelfTest {
             }
             case 4 -> {
                 bookshelf.clear();
-                System.out.println(emptyBookshelf);
+                System.out.println(EMPTY_BOOKSHELF);
             }
             case 5 -> continueWork = false;
             default -> System.out.println("Введите значение от 1 до 5");
@@ -83,14 +83,14 @@ public class BookshelfTest {
 
     private static void printBookshelf(Bookshelf bookshelf) {
         Book[] books = bookshelf.getAllBooks();
-        int booksNum = bookshelf.getNumBooks();
+        int numBooks = bookshelf.getNumBooks();
         int maxLength = bookshelf.getMaxLength();
         System.out.println();
         for(int i = 0; i < bookshelf.getNumBooks(); i++) {
             System.out.printf("|%-" + maxLength + "s|\n", books[i]);
             System.out.println("|" + "-".repeat(maxLength) + "|");
         }
-        if(booksNum < Bookshelf.SHELVES_NUM) {
+        if(numBooks < Bookshelf.NUM_SHELVES) {
             System.out.println("|" + " ".repeat(maxLength) + "|");
         }
     }

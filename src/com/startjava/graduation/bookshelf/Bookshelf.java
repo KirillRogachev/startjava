@@ -5,8 +5,8 @@ import java.util.NoSuchElementException;
 
 public class Bookshelf {
 
-    public static final int SHELVES_NUM = 10;
-    private Book[] books = new Book[SHELVES_NUM];
+    public static final int NUM_SHELVES = 10;
+    private Book[] books = new Book[NUM_SHELVES];
     private int numBooks;
     private int maxLength;
 
@@ -16,14 +16,14 @@ public class Bookshelf {
 
     public int getMaxLength() { return maxLength; }
 
-    public int getNumEmptyShelves() { return (SHELVES_NUM - numBooks); }
+    public int getNumEmptyShelves() { return (NUM_SHELVES - numBooks); }
 
     public void add(Book book) {
-        if(numBooks >= SHELVES_NUM) {
+        if(numBooks >= NUM_SHELVES) {
             System.out.println("Книга не может быть сохранена. Шкаф полностью заполнен.");
         } else {
             books[numBooks] = book;
-            checkLength(numBooks++);
+            calculateMaxLength(numBooks++);
         }
     }
 
@@ -53,18 +53,18 @@ public class Bookshelf {
         } else if(deletedRecordLength == maxLength) {
             maxLength = 0;
             for(int i = 0; i < numBooks; i++) {
-                checkLength(i);
+                calculateMaxLength(i);
             }
         }
     }
 
     public void clear() {
-        Arrays.fill(books, 0, numBooks - 1, null);
+        Arrays.fill(books, 0, numBooks, null);
         numBooks = 0;
         maxLength = 0;
     }
 
-    private void checkLength(int i) {
+    private void calculateMaxLength(int i) {
         if(books[i].getLength() > maxLength) {
             maxLength = books[i].getLength();
         }
