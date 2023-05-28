@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS Jaegers;
 CREATE DATABASE jaegers;
 \c jaegers;
 CREATE TABLE Jaegers (
@@ -10,3 +11,5 @@ CREATE TABLE Jaegers (
 	origin    TEXT,
 	launch    TEXT,
 	kaijuKill INTEGER);
+\ir init_db.sql;
+\ir queries.sql;
