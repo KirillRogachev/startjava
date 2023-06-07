@@ -17,5 +17,4 @@ CREATE TABLE Jaegers (
 );
 
 \ir init_db.sql;
-
 \ir queries.sql;

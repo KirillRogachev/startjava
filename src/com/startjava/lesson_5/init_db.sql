@@ -1,5 +1,4 @@
 INSERT INTO Jaegers (modelName, mark, height, weight, status, origin, launch, kaijuKill)
-
 VALUES ('Bracer Phoenix', 'Mark-5', '232', '2128', 'Constructed', 'China', '2025', '1'),
        ('Romeo Blue', 'Mark-1', '255', '7775', 'Constructed', 'United States of America', '2015', '2'),
        ('November Ajax', 'Mark-6', '259', '5481', 'Destroyed', 'Santa Monica', '2018', '0'),
